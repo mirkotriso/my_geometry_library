@@ -1,43 +1,45 @@
 class Vector(object):
 	def __init__(self, p0, p1):
-		self.__p0 = p0  # read-write
-		self.__p1 = p1  # read-write
-		if len(p0) == 2:
-			self.__x = p1.x - p0.x  # read only
-			self.__y = p1.y - p0.y  # read only
-			self.__coords = (self.x, self.y)  # read only
-		if len(p0) == 3:
-			self.__x = p1.x - p0.x  # read only
-			self.__y = p1.y - p0.y  # read only
-			self.__z = p1.z - p0.z  # read only
-			self.__coords = (self.x, self.y, self.z)  # read only
-    @property
-    def p0(self):        
-        return self.__p0
-    @p0.setter
-    def p0(self, p0):        
-        self.__p0 = p0
-		if len(p0) == 2:
-			self.__x = self.p1.x - p0.x
-			self.__y = self.p1.y - p0.y
-		if len(p0) == 3:
-			self.__x = self.p1.x - p0.x
-			self.__y = self.p1.y - p0.y
-			self.__z = self.p1.z - p0.z
-        
-    @property    
+	    self.__p0 = p0  # read-write
+	    self.__p1 = p1  # read-write
+	    if len(p0) == 2:
+		    self.__x = p1.x - p0.x  # read only
+		    self.__y = p1.y - p0.y  # read only
+		    self.__coords = (self.x, self.y)  # read only
+	    if len(p0) == 3:
+		    self.__x = p1.x - p0.x  # read only
+		    self.__y = p1.y - p0.y  # read only
+		    self.__z = p1.z - p0.z  # read only
+		    self.__coords = (self.x, self.y, self.z)  # read only
+    
+	@property
+	def p0(self):
+	    return self.__p0
+
+	@p0.setter
+	def p0(self, p0):
+	    self.__p0 = p0
+	    if len(p0) == 2:
+		    self.__x = self.p1.x - p0.x
+		    self.__y = self.p1.y - p0.y
+	    if len(p0) == 3:
+		    self.__x = self.p1.x - p0.x
+		    self.__y = self.p1.y - p0.y
+		    self.__z = self.p1.z - p0.z
+
+	@property
     def p1(self):        
         return self.__p1
     @p1.setter
     def p1(self, p1):        
         self.__p1 = p1
-		if len(p1) == 2:
-			self.__x = self.p1.x - p0.x
-			self.__y = self.p1.y - p0.y
-		if len(p1) == 3:
-			self.__x = self.p1.x - p0.x
-			self.__y = self.p1.y - p0.y
-			self.__z = self.p1.z - p0.z
+	    if len(p1) == 2:
+		    self.__x = self.p1.x - p0.x
+		    self.__y = self.p1.y - p0.y
+	    if len(p1) == 3:
+		    self.__x = self.p1.x - p0.x
+		    self.__y = self.p1.y - p0.y
+		    self.__z = self.p1.z - p0.z
 
     @property     
     def x(self):                
@@ -50,9 +52,9 @@ class Vector(object):
     @property
     def z(self):
         return self.__z
-		
-	@property
-	def coords(self):
+
+    @property
+    def coords(self):
 		return self.__coords
 
 	def __eq__(self, other):
