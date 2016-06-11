@@ -109,6 +109,4 @@ class Vector(object):
             raise TypeError(
                     "unsupported operand (multiply/divide) for types %s and %s" % (
                         self.__class__, type(other)))
-    def gigi():
-        return 0
 			
