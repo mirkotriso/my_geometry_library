@@ -13,6 +13,8 @@ class Point3D(object):
 	    self.y = y
 	    self.z = z
 	    self.coords = (x, y, z)
+    def __len__(self):
+        return len(self.coords)
     def __add__(self, p):
         return Point3D(self.x + p.x, self.y + p.y, self.z + p.z)
 

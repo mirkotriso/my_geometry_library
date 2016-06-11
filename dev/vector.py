@@ -1,63 +1,65 @@
+import math
+import numbers
+
 class Vector(object):
-	def __init__(self, p0, p1):
-	    self.__p0 = p0  # read-write
-	    self.__p1 = p1  # read-write
-	    if len(p0) == 2:
-		    self.__x = p1.x - p0.x  # read only
-		    self.__y = p1.y - p0.y  # read only
-		    self.__coords = (self.x, self.y)  # read only
-	    if len(p0) == 3:
-		    self.__x = p1.x - p0.x  # read only
-		    self.__y = p1.y - p0.y  # read only
-		    self.__z = p1.z - p0.z  # read only
-		    self.__coords = (self.x, self.y, self.z)  # read only
-    
-	@property
-	def p0(self):
-	    return self.__p0
+    def __init__(self, p0, p1):
+        self.__p0 = p0  # read-write
+        self.__p1 = p1  # read-write
+        if len(p0) == 2:
+            self.__x = p1.x - p0.x  # read only
+            self.__y = p1.y - p0.y  # read only
+            self.__coords = (self.x, self.y)  # read only
+        if len(p0) == 3:
+            self.__x = p1.x - p0.x  # read only
+            self.__y = p1.y - p0.y  # read only
+            self.__z = p1.z - p0.z  # read only
+            self.__coords = (self.x, self.y, self.z)  # read only
 
-	@p0.setter
-	def p0(self, p0):
-	    self.__p0 = p0
-	    if len(p0) == 2:
-		    self.__x = self.p1.x - p0.x
-		    self.__y = self.p1.y - p0.y
-	    if len(p0) == 3:
-		    self.__x = self.p1.x - p0.x
-		    self.__y = self.p1.y - p0.y
-		    self.__z = self.p1.z - p0.z
+    @property
+    def p0(self):
+        return self.__p0
+    @p0.setter
+    def p0(self, p0):
+        self.__p0 = p0
+        if len(p0) == 2:
+            self.__x = self.p1.x - p0.x
+            self.__y = self.p1.y - p0.y
+        if len(p0) == 3:
+            self.__x = self.p1.x - p0.x
+            self.__y = self.p1.y - p0.y
+            self.__z = self.p1.z - p0.z
 
-	@property
-    def p1(self):        
+    @property
+    def p1(self):
         return self.__p1
     @p1.setter
-    def p1(self, p1):        
+    def p1(self, p1):
         self.__p1 = p1
-	    if len(p1) == 2:
-		    self.__x = self.p1.x - p0.x
-		    self.__y = self.p1.y - p0.y
-	    if len(p1) == 3:
-		    self.__x = self.p1.x - p0.x
-		    self.__y = self.p1.y - p0.y
-		    self.__z = self.p1.z - p0.z
+        if len(p1) == 2:
+            self.__x = self.p1.x - p0.x
+            self.__y = self.p1.y - p0.y
+        if len(p1) == 3:
+            self.__x = self.p1.x - p0.x
+            self.__y = self.p1.y - p0.y
+            self.__z = self.p1.z - p0.z
 
-    @property     
-    def x(self):                
+    @property
+    def x(self):
         return self.__x
     
     @property
     def y(self):
         return self.__y
-    
+
     @property
     def z(self):
         return self.__z
 
     @property
     def coords(self):
-		return self.__coords
+        return self.__coords
 
-	def __eq__(self, other):
+    def __eq__(self, other):
         """I am allowing these to compared to tuples, and to say that yes, they
         are equal. the idea here is that a Vector3d _is_ a tuple of floats, but
         with some extra methods.
@@ -78,7 +80,7 @@ class Vector(object):
         """just returns the normalized version of self without editing self in
         place.
         """
-        return self * (1 / self.length)
+        return self * (1 / self.length)  # define length or use it as function
 		
     def dot(self, other):
         """Gets the dot product of this vector and another.
@@ -107,4 +109,6 @@ class Vector(object):
             raise TypeError(
                     "unsupported operand (multiply/divide) for types %s and %s" % (
                         self.__class__, type(other)))
+    def gigi():
+        return 0
 			
