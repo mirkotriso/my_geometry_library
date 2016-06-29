@@ -1,67 +1,20 @@
+# -*- coding: utf-8 -*-
 import math
 import numbers
 from point import Point
 
 class Vector(object):
     def __init__(self, p1, p0=Point(0,0,0)):
-        self.__p0 = p0  # read-write
-        self.__p1 = p1  # read-write
-        self.__x = p1.x - p0.x  # read only
-        self.__y = p1.y - p0.y  # read only
+        self.p0 = p0  # read-write
+        self.p1 = p1  # read-write
+        self.x = p1.x - p0.x  # read only
+        self.y = p1.y - p0.y  # read only
         if len(p0) == 2:
-            self.__coords = (self.x, self.y)  # read only
+            self.coords = (self.x, self.y)  # read only
         if len(p0) == 3:
-            self.__z = p1.z - p0.z  # read only
-            self.__coords = (self.x, self.y, self.z)  # read only
-        self.__l = self.__length()
-
-    @property
-    def p0(self):
-        return self.__p0
-    @p0.setter
-    def p0(self, new_p0):
-        self.__p0 = new_p0
-        self.__x = self.p1.x - new_p0.x
-        self.__y = self.p1.y - new_p0.y
-        self.__coords = (self.x, self.y)
-        if len(new_p0) == 3:
-            self.__z = self.p1.z - new_p0.z
-            self.__coords = (self.x, self.y, self.z)
-        self.__l = self.__length()
-
-    @property
-    def p1(self):
-        return self.__p1
-    @p1.setter
-    def p1(self, new_p1):
-        self.__p1 = new_p1
-        self.__x = new_p1.x - self.p0.x
-        self.__y = new_p1.y - self.p0.y
-        self.__coords = (self.x, self.y)
-        if len(new_p1) == 3:
-            self.__z = new_p1.z - self.p0.z
-            self.__coords = (self.x, self.y, self.z)
-        self.__l = self.__length()
-
-    @property
-    def x(self):
-        return self.__x
-    
-    @property
-    def y(self):
-        return self.__y
-
-    @property
-    def z(self):
-        return self.__z
-
-    @property
-    def coords(self):
-        return self.__coords
-        
-    @property
-    def l(self):
-        return self.__l
+            self.z = p1.z - p0.z  # read only
+            self.coords = (self.x, self.y, self.z)  # read only
+        self.l = self.__length()
 
     def __hash__(self):
         return self.coords.__hash__()
@@ -100,7 +53,7 @@ class Vector(object):
             # then add to the length of the vector
             # multiply the number by the normalized self, and then
             # add the multiplied vector to self
-            return (self.normalized() * other + self).move(self.p0)
+            return self.__class__(Point(*(self.normalized() * other + self).coords), self.p0)
         elif isinstance(other, self.__class__):
             # add all the coordinates together
             # there are probably more efficient ways to do this
@@ -145,9 +98,9 @@ class Vector(object):
         # only calculate the length if asked to.
         return math.sqrt(sum(n**2 for n in self.coords))
         
-    def move(self, new_p0):
+    def __move(self, new_p0):
         """move the application point p0"""
-        return self.__class__(Point(*self.coords) + new_p0, new_p0)
+        return 
 		
     def normalized(self):
         """just returns the normalized version of self without editing self in
