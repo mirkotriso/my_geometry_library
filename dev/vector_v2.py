@@ -106,7 +106,7 @@ class Vector(object):
         """just returns the normalized version of self without editing self in
         place.
         """
-        return self * (1 / self.__l)  # define length or use it as function
+        return self * (1/self.l)  # define length or use it as function
 		
     def dot(self, other):
         """Gets the dot product of this vector and another.
@@ -124,3 +124,10 @@ class Vector(object):
         y = (self[2] * other[0]) - (self[0] * other[2])
         z = (self[0] * other[1]) - (self[1] * other[0])
         return self.__class__(Point(x, y, z))
+        
+    def angleTo(self, other):
+        """computes the angle between two vectors
+            cos theta = (n * m) / (n.length * m.length)
+        """
+        cosTheta = (self * other) / (self.length * other.length)
+        return math.acos(cosTheta)

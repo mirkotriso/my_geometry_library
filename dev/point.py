@@ -27,6 +27,11 @@ class Point(object):
 
     def __add__(self, p):
         return Point(*[a + b for a, b in zip(self.coords, p.coords)])
+        
+    def __sub__(self, other):
+        """Subtract a vector or number
+        """
+        return self.__add__(other * -1)
 
     def __repr__(self):
         if len(self.coords) == 2:
@@ -37,3 +42,15 @@ class Point(object):
     def __iter__(self):
         """For iterating, the vectors coordinates are represented as a tuple."""
         return self.coords.__iter__()
+
+    def distance_to(self, other):
+        """Find the distance between this point and another.
+        """
+        #if isinstance(other, Plane):
+         #   # get distance between point and plane
+         #   pass
+        #elif isinstance(other, Line):
+            # get distance between point and line
+         #   pass
+        #else:
+        return (other - self).l
