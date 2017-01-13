@@ -1,0 +1,9 @@
+- define infinite lines and planes
+- define distance from lines and planes
+- define segments and polygons
+- wrap with shapely for polygons (complicated otherwise)
+- add all the different checks:
+	- orientation of points
+	- point inside or outside
+- add collections of points to easily define groups of points
+- add basic geometries both 2d and 3d
